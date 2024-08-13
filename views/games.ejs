@@ -8,6 +8,13 @@
   <body>
     <%- include('header') %> <%- include('navbar') %>
     <h2>Games (W.I.P.)</h2>
+    <div>
+      <ul>
+        <% for (let game of games){%>
+        <li><%=game.gamename%></li>
+        <%}%>
+      </ul>
+    </div>
     <%- include('footer') %>
   </body>
 </html>
