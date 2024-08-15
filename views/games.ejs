@@ -11,7 +11,19 @@
     <div>
       <ul>
         <% for (let game of games){%>
-        <li><%=game.gamename%></li>
+        <li>
+          <div>
+            <h3><%= game.gamename %></h3>
+            <p>Price : $ <%= game.price %></p>
+            <nav>
+              <ul>
+                <% for (let genre of game.genre) {%>
+                <a href=""><li><%=genre.genrename%></li></a>
+                <%}%>
+              </ul>
+            </nav>
+          </div>
+        </li>
         <%}%>
       </ul>
     </div>
