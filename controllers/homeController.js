@@ -17,8 +17,19 @@ const getGames = async (req, res) => {
   }
   res.render("games", { games: games });
 };
+const newGame = (req, res) => {
+  res.render("newGame");
+};
+const postGame = async (req, res) => {
+  console.log(req.body);
+  const { gamename, gamedesc, gameprice } = req.body;
+  await db.newGame(gamename, gamedesc, gameprice);
+  res.redirect("/games");
+};
 module.exports = {
   getGames,
   getGenres,
   getHome,
+  newGame,
+  postGame,
 };
