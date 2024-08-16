@@ -13,6 +13,12 @@
       <input type="text" name="gamedesc" id="gamedesc" />
       <label for="gameprice">Price :</label>
       <input type="text" name="gameprice" id="gameprice" />
+      <label for="genre">Select Genre :</label>
+      <select name="genre" id="genre" multiple>
+        <%for (let genrename of genrenames){%>
+        <option value="<%=genrename.genreid%>"><%=genrename.genrename%></option>
+        <%}%>
+      </select>
       <button type="submit">Submit</button>
     </form>
   </body>

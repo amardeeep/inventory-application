@@ -31,7 +31,17 @@ async function newGame(gamename, gamedesc, gameprice) {
     [gamename, gamedesc, gameprice]
   );
 }
-
+async function genreForGame(gamename, genreid) {
+  const gameid = await pool.query(
+    `select gameid from games where games.gamename like '${gamename}'`
+  );
+  for (let row of genreid) {
+    await pool.query(`insert into game_genre (gameid,genreid) values ($1,$2)`, [
+      gameid.rows[0].gameid,
+      parseInt(row),
+    ]);
+  }
+}
 //create genre
 async function newGenre(genrename, description) {
   await pool.query(`insert into genre (genrename,description) values ($1,$2)`, [
@@ -50,4 +60,5 @@ module.exports = {
   getGameForGenre,
   newGame,
   newGenre,
+  genreForGame,
 };
