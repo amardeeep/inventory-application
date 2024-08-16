@@ -31,7 +31,14 @@ async function newGame(gamename, gamedesc, gameprice) {
     [gamename, gamedesc, gameprice]
   );
 }
+
 //create genre
+async function newGenre(genrename, description) {
+  await pool.query(`insert into genre (genrename,description) values ($1,$2)`, [
+    genrename,
+    description,
+  ]);
+}
 //delete game
 //delete genre
 //update game
@@ -42,4 +49,5 @@ module.exports = {
   getGenreForGame,
   getGameForGenre,
   newGame,
+  newGenre,
 };

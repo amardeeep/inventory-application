@@ -21,10 +21,17 @@ const newGame = (req, res) => {
   res.render("newGame");
 };
 const postGame = async (req, res) => {
-  console.log(req.body);
   const { gamename, gamedesc, gameprice } = req.body;
   await db.newGame(gamename, gamedesc, gameprice);
   res.redirect("/games");
+};
+const newGenre = (req, res) => {
+  res.render("newGenre");
+};
+const postGenre = async (req, res) => {
+  const { genrename, description } = req.body;
+  await db.newGenre(genrename, description);
+  res.redirect("/genres");
 };
 module.exports = {
   getGames,
@@ -32,4 +39,6 @@ module.exports = {
   getHome,
   newGame,
   postGame,
+  newGenre,
+  postGenre,
 };

@@ -7,10 +7,14 @@ const {
   getGames,
   newGame,
   postGame,
+  newGenre,
+  postGenre,
 } = require("../controllers/homeController");
 homeRouter.get("/", getHome);
 homeRouter.get("/genres", getGenres);
 homeRouter.get("/games", getGames);
 homeRouter.get("/newGame", newGame);
 homeRouter.post("/newGame", postGame);
+homeRouter.get("/newGenre", newGenre);
+homeRouter.post("/newGenre", postGenre);
 module.exports = homeRouter;
