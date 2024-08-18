@@ -35,10 +35,18 @@ async function genreForGame(gamename, genreid) {
   const gameid = await pool.query(
     `select gameid from games where games.gamename like '${gamename}'`
   );
-  for (let row of genreid) {
-    await pool.query(`insert into game_genre (gameid,genreid) values ($1,$2)`, [
+  console.log(genreid);
+  if (Array.isArray(genreid)) {
+    for (let row of genreid) {
+      await pool.query(
+        `insert into game_genre (gameid,genreid) values ($1,$2)`,
+        [gameid.rows[0].gameid, parseInt(row)]
+      );
+    }
+  } else {
+    await pool.query(`insert into game_genre (gameid,genreid) values($1,$2)`, [
       gameid.rows[0].gameid,
-      parseInt(row),
+      parseInt(genreid),
     ]);
   }
 }
