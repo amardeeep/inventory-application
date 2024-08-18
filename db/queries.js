@@ -16,6 +16,13 @@ async function getAllGenres() {
   const { rows } = await pool.query("select * from genre");
   return rows;
 }
+//read a genre
+async function getGenre(genrename) {
+  const { rows } = await pool.query(
+    `select * from genre where genre.genrename like '${genrename}'`
+  );
+  return rows;
+}
 async function getGameForGenre(genreid) {
   const { rows } = await pool.query(`select games.gamename from games
     join game_genre on games.gameid=game_genre.gameid
@@ -82,10 +89,12 @@ async function deleteFromgame(gamename) {
     delete from game_genre where game_genre.gameid=${gameid.rows[0].gameid}`);
 }
 //update game
+
 //update genre
 module.exports = {
   getAllGames,
   getAllGenres,
+  getGenre,
   getGenreForGame,
   getGameForGenre,
   newGame,

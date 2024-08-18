@@ -8,24 +8,13 @@
   <body>
     <%- include('header') %> <%- include('navbar') %>
     <h2>Genres (W.I.P.)</h2>
-
     <div>
       <ul>
         <% for (let genre of genres){%>
         <li>
           <div>
             <h3><%= genre.genrename %></h3>
-            <button>Update</button>
-            <a href="/<%=genre.genrename%>/deleteGenre"
-              ><button>Delete</button></a
-            >
-            <nav>
-              <ul>
-                <% for (let game of genre.game){%>
-                <a href=""><li><%=game.gamename%></li></a>
-                <%}%>
-              </ul>
-            </nav>
+            <p><a href="/genres/<%=genre.genrename%>">More</a></p>
           </div>
         </li>
         <%}%>

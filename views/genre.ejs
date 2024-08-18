@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=title%></title>
+  </head>
+  <body>
+    <div>
+      <h2><%=genre[0].genrename%></h2>
+      <p><%=genre[0].description%></p>
+      <a href="/genres">Back</a>
+      <button>Update</button>
+      <a href="/<%=genre[0].genrename%>/deleteGenre"><button>Delete</button></a>
+      <nav>
+        <ul>
+          <% for (let game of genre.game){%>
+          <a href=""><li><%=game.gamename%></li></a>
+          <%}%>
+        </ul>
+      </nav>
+    </div>
+  </body>
+</html>

@@ -4,6 +4,7 @@ const homeRouter = Router();
 const {
   getHome,
   getGenres,
+  getGenre,
   getGames,
   newGame,
   postGame,
@@ -14,6 +15,7 @@ const {
 } = require("../controllers/homeController");
 homeRouter.get("/", getHome);
 homeRouter.get("/genres", getGenres);
+homeRouter.get("/genres/:genre", getGenre);
 homeRouter.get("/games", getGames);
 homeRouter.get("/newGame", newGame);
 homeRouter.post("/newGame", postGame);
