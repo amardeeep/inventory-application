@@ -10,6 +10,7 @@ const {
   newGenre,
   postGenre,
   deleteGenre,
+  deleteGame,
 } = require("../controllers/homeController");
 homeRouter.get("/", getHome);
 homeRouter.get("/genres", getGenres);
@@ -19,4 +20,5 @@ homeRouter.post("/newGame", postGame);
 homeRouter.get("/newGenre", newGenre);
 homeRouter.post("/newGenre", postGenre);
 homeRouter.get("/:genrename/deleteGenre", deleteGenre);
+homeRouter.get("/:gamename/deleteGame", deleteGame);
 module.exports = homeRouter;

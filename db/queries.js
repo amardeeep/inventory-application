@@ -50,11 +50,28 @@ async function newGenre(genrename, description) {
   ]);
 }
 //delete game
+async function deleteGame(gamename) {
+  await pool.query(`delete from games where games.gamename like '${gamename}'`);
+}
 //delete genre
 async function deleteGenre(genrename) {
   await pool.query(
     `delete from genre where genre.genrename like '${genrename}'`
   );
+}
+async function deleteFromgenre(genrename) {
+  const genreid = await pool.query(
+    `select genreid from genre where genre.genrename like '${genrename}'`
+  );
+  await pool.query(`
+    delete from game_genre where game_genre.genreid=${genreid.rows[0].genreid}`);
+}
+async function deleteFromgame(gamename) {
+  const gameid = await pool.query(
+    `select gameid from games where games.gamename like '${gamename}'`
+  );
+  await pool.query(`
+    delete from game_genre where game_genre.gameid=${gameid.rows[0].gameid}`);
 }
 //update game
 //update genre
@@ -67,4 +84,7 @@ module.exports = {
   newGenre,
   genreForGame,
   deleteGenre,
+  deleteGame,
+  deleteFromgenre,
+  deleteFromgame,
 };
