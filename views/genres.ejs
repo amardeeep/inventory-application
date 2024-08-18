@@ -16,6 +16,9 @@
           <div>
             <h3><%= genre.genrename %></h3>
             <button>Update</button>
+            <a href="/<%=genre.genrename%>/deleteGenre"
+              ><button>Delete</button></a
+            >
             <nav>
               <ul>
                 <% for (let game of genre.game){%>

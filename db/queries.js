@@ -51,6 +51,11 @@ async function newGenre(genrename, description) {
 }
 //delete game
 //delete genre
+async function deleteGenre(genrename) {
+  await pool.query(
+    `delete from genre where genre.genrename like '${genrename}'`
+  );
+}
 //update game
 //update genre
 module.exports = {
@@ -61,4 +66,5 @@ module.exports = {
   newGame,
   newGenre,
   genreForGame,
+  deleteGenre,
 };

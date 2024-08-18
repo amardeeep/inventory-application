@@ -49,6 +49,13 @@ const postGenre = async (req, res) => {
   await db.newGenre(genrename, description);
   res.redirect("/genres");
 };
+
+//delete genre
+const deleteGenre = async (req, res) => {
+  const genrename = req.params.genrename;
+  await db.deleteGenre(genrename);
+  res.redirect("/genres");
+};
 module.exports = {
   getGames,
   getGenres,
@@ -57,4 +64,5 @@ module.exports = {
   postGame,
   newGenre,
   postGenre,
+  deleteGenre,
 };
