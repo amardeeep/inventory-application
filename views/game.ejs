@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=title%></title>
+  </head>
+  <body>
+    <div>
+      <h2><%=game[0].gamename%></h2>
+      <p><%=game[0].description%></p>
+      <p><%=game[0].price%></p>
+      <a href="/games">Back</a>
+      <button>Update</button>
+      <a href="/<%=game[0].gamename%>/deleteGame">
+        <button>Delete</button>
+      </a>
+      <nav>
+        <ul>
+          <% for (let genre of game.genre) {%>
+          <a href="/genres/<%=genre.genrename%>"
+            ><li><%=genre.genrename%></li></a
+          >
+          <%}%>
+        </ul>
+      </nav>
+    </div>
+  </body>
+</html>

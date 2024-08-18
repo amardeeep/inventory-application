@@ -14,18 +14,7 @@
         <li>
           <div>
             <h3><%= game.gamename %></h3>
-            <button>Update</button>
-            <a href="/<%=game.gamename%>/deleteGame">
-              <button>Delete</button>
-            </a>
-            <p>Price : $ <%= game.price %></p>
-            <nav>
-              <ul>
-                <% for (let genre of game.genre) {%>
-                <a href=""><li><%=genre.genrename%></li></a>
-                <%}%>
-              </ul>
-            </nav>
+            <a href="/games/<%=game.gamename%>">More</a>
           </div>
         </li>
         <%}%>

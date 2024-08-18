@@ -30,7 +30,12 @@ const getGames = async (req, res) => {
   res.render("games", { games: games });
 };
 // display game details
-
+const getGame = async (req, res) => {
+  const gamename = req.params.game;
+  const game = await db.getGame(gamename);
+  game.genre = await db.getGenreForGame(game[0].gameid);
+  res.render("game", { title: game[0].gamename, game: game });
+};
 //display new game form and display genre to select from genres
 const newGame = async (req, res) => {
   const genrenames = await db.getAllGenres();
@@ -73,6 +78,7 @@ const deleteGame = async (req, res) => {
 };
 module.exports = {
   getGames,
+  getGame,
   getGenres,
   getGenre,
   getHome,
