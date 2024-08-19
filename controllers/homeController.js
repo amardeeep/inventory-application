@@ -6,11 +6,11 @@ const alphaErr = "must only contain letters";
 const numErr = "must only contains numbers";
 const empty = "cannot be empty";
 const lengthErr = "must be between 1 and 10 characters";
-const validateUser = [
+const validateGame = [
   body("gamename")
     .trim()
     .notEmpty()
-    .withMessage(`First Name ${empty}`)
+    .withMessage(`Game Name ${empty}`)
     .isAlpha()
     .withMessage(`Game Name ${alphaErr}`)
     .isLength({ min: 1, max: 10 })
@@ -23,6 +23,17 @@ const validateUser = [
     .isNumeric()
     .withMessage(`Price ${numErr}`),
   body("genre").notEmpty().withMessage(`Genre ${empty}`),
+];
+const validateGenre = [
+  body("genrename")
+    .trim()
+    .notEmpty()
+    .withMessage(`Genre Name ${empty}`)
+    .isAlpha()
+    .withMessage(`Genre Name ${alphaErr}`)
+    .isLength({ min: 1, max: 10 })
+    .withMessage(`Genre Name ${lengthErr}`),
+  body("description").trim().notEmpty().withMessage(`Description ${empty}`),
 ];
 //display home
 const getHome = async (req, res) => {
@@ -67,7 +78,7 @@ const newGame = async (req, res) => {
 
 //post game details
 const postGame = [
-  validateUser,
+  validateGame,
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -76,8 +87,6 @@ const postGame = [
         .status(400)
         .render("newGame", { genrenames: genrenames, errors: errors.array() });
     }
-  },
-  async (req, res) => {
     const { gamename, gamedesc, gameprice, genre } = req.body;
     await db.newGame(gamename, gamedesc, gameprice);
     await db.genreForGame(gamename, genre);
@@ -90,11 +99,18 @@ const newGenre = (req, res) => {
 };
 
 //post genre details
-const postGenre = async (req, res) => {
-  const { genrename, description } = req.body;
-  await db.newGenre(genrename, description);
-  res.redirect("/genres");
-};
+const postGenre = [
+  validateGenre,
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).render("newGenre", { errors: errors.array() });
+    }
+    const { genrename, description } = req.body;
+    await db.newGenre(genrename, description);
+    res.redirect("/genres");
+  },
+];
 
 //delete genre
 const deleteGenre = async (req, res) => {
