@@ -1,6 +1,29 @@
 //require db queries
 const db = require("../db/queries");
-
+//validation
+const { body, validationResult } = require("express-validator");
+const alphaErr = "must only contain letters";
+const numErr = "must only contains numbers";
+const empty = "cannot be empty";
+const lengthErr = "must be between 1 and 10 characters";
+const validateUser = [
+  body("gamename")
+    .trim()
+    .notEmpty()
+    .withMessage(`First Name ${empty}`)
+    .isAlpha()
+    .withMessage(`Game Name ${alphaErr}`)
+    .isLength({ min: 1, max: 10 })
+    .withMessage(`Game Name ${lengthErr}`),
+  body("gamedesc").trim().notEmpty().withMessage(`Description ${empty}`),
+  body("gameprice")
+    .trim()
+    .notEmpty()
+    .withMessage(`Price ${empty}`)
+    .isNumeric()
+    .withMessage(`Price ${numErr}`),
+  body("genre").notEmpty().withMessage(`Genre ${empty}`),
+];
 //display home
 const getHome = async (req, res) => {
   res.render("home");
@@ -43,13 +66,24 @@ const newGame = async (req, res) => {
 };
 
 //post game details
-const postGame = async (req, res) => {
-  const { gamename, gamedesc, gameprice, genre } = req.body;
-  await db.newGame(gamename, gamedesc, gameprice);
-  await db.genreForGame(gamename, genre);
-  res.redirect("/games");
-};
-
+const postGame = [
+  validateUser,
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      const genrenames = await db.getAllGenres();
+      return res
+        .status(400)
+        .render("newGame", { genrenames: genrenames, errors: errors.array() });
+    }
+  },
+  async (req, res) => {
+    const { gamename, gamedesc, gameprice, genre } = req.body;
+    await db.newGame(gamename, gamedesc, gameprice);
+    await db.genreForGame(gamename, genre);
+    res.redirect("/games");
+  },
+];
 //display genre form
 const newGenre = (req, res) => {
   res.render("newGenre");
@@ -76,6 +110,11 @@ const deleteGame = async (req, res) => {
   await db.deleteGame(gamename);
   res.redirect("/games");
 };
+
+//update game
+const updateGame = async (req, res) => {};
+//update genre
+const updateGenre = async (req, res) => {};
 module.exports = {
   getGames,
   getGame,

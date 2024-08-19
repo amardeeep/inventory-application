@@ -6,6 +6,8 @@
     <title>New Game</title>
   </head>
   <body>
+    <%- include("partials/errors.ejs") %>
+
     <form action="/newGame" method="post">
       <label for="gamename">Name :</label>
       <input type="text" name="gamename" id="gamename" />
@@ -19,6 +21,7 @@
         <option value="<%=genrename.genreid%>"><%=genrename.genrename%></option>
         <%}%>
       </select>
+      <a href="/"><button type="button">Back</button></a>
       <button type="submit">Submit</button>
     </form>
   </body>
