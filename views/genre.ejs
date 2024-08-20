@@ -6,6 +6,7 @@
     <title><%=title%></title>
   </head>
   <body>
+    <%- include('header') %> <%- include('navbar') %>
     <div>
       <h2><%=genre[0].genrename%></h2>
       <p><%=genre[0].description%></p>
@@ -20,5 +21,6 @@
         </ul>
       </nav>
     </div>
+    <%- include('footer') %>
   </body>
 </html>

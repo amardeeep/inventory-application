@@ -3,18 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>New Game</title>
+    <title><%=title%></title>
   </head>
   <body>
     <%- include('header') %> <%- include('navbar') %> <%-
     include("partials/errors.ejs") %>
-    <form action="/newGame" method="post">
+    <form action="/updateGame" method="post">
       <label for="gamename">Name :</label>
-      <input type="text" name="gamename" id="gamename" />
+      <input
+        type="text"
+        name="gamename"
+        id="gamename"
+        value="<%=game[0].gamename%>"
+      />
       <label for="gamedesc">Description :</label>
-      <input type="text" name="gamedesc" id="gamedesc" />
+      <input
+        type="text"
+        name="gamedesc"
+        id="gamedesc"
+        value="<%=game[0].description%>"
+      />
       <label for="gameprice">Price :</label>
-      <input type="text" name="gameprice" id="gameprice" />
+      <input
+        type="text"
+        name="gameprice"
+        id="gameprice"
+        value="<%=game[0].price%>"
+      />
       <label for="genre">Select Genre :</label>
       <select name="genre" id="genre" multiple>
         <%for (let genrename of genrenames){%>

@@ -48,7 +48,6 @@ async function genreForGame(gamename, genreid) {
   const gameid = await pool.query(
     `select gameid from games where games.gamename like '${gamename}'`
   );
-  console.log(genreid);
   if (Array.isArray(genreid)) {
     for (let row of genreid) {
       await pool.query(
@@ -95,7 +94,7 @@ async function deleteFromgame(gamename) {
     delete from game_genre where game_genre.gameid=${gameid.rows[0].gameid}`);
 }
 //update game
-
+async function updateGame(gamename) {}
 //update genre
 module.exports = {
   getAllGames,

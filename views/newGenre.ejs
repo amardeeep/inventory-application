@@ -6,7 +6,8 @@
     <title>New Genre</title>
   </head>
   <body>
-    <%- include("partials/errors.ejs") %>
+    <%- include('header') %> <%- include('navbar') %> <%-
+    include("partials/errors.ejs") %>
     <form action="/newGenre" method="post">
       <label for="genrename">Name :</label>
       <input type="text" name="genrename" id="genrename" />

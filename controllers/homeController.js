@@ -128,7 +128,32 @@ const deleteGame = async (req, res) => {
 };
 
 //update game
-const updateGame = async (req, res) => {};
+const updateGameGet = async (req, res) => {
+  const gamename = req.params.gamename;
+  const game = await db.getGame(gamename);
+  const genrenames = await db.getAllGenres();
+  res.render("updateGame", {
+    title: `Update ${game[0].gamename}`,
+    game: game,
+    genrenames: genrenames,
+  });
+};
+const updateGamePost = [
+  validateGame,
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      const genrenames = await db.getAllGenres();
+      return res
+        .status(400)
+        .render("newGame", { genrenames: genrenames, errors: errors.array() });
+    }
+    const { gamename, gamedesc, gameprice, genre, gameid } = req.body;
+
+    await db.genreForGame(gamename, genre);
+    res.redirect("/games");
+  },
+];
 //update genre
 const updateGenre = async (req, res) => {};
 module.exports = {
@@ -143,4 +168,5 @@ module.exports = {
   postGenre,
   deleteGenre,
   deleteGame,
+  updateGameGet,
 };
