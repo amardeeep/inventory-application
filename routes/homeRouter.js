@@ -14,6 +14,7 @@ const {
   deleteGenre,
   deleteGame,
   updateGameGet,
+  updateGamePost,
 } = require("../controllers/homeController");
 
 homeRouter.get("/", getHome);
@@ -28,4 +29,5 @@ homeRouter.post("/newGenre", postGenre);
 homeRouter.get("/:genrename/deleteGenre", deleteGenre);
 homeRouter.get("/:gamename/deleteGame", deleteGame);
 homeRouter.get("/:gamename/updateGame", updateGameGet);
+homeRouter.post("/:gameid/updateGamePost", updateGamePost);
 module.exports = homeRouter;

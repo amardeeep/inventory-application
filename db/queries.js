@@ -44,7 +44,7 @@ async function newGame(gamename, gamedesc, gameprice) {
     [gamename, gamedesc, gameprice]
   );
 }
-async function genreForGame(gamename, genreid) {
+async function insertGenreForGame(gamename, genreid) {
   const gameid = await pool.query(
     `select gameid from games where games.gamename like '${gamename}'`
   );
@@ -62,6 +62,7 @@ async function genreForGame(gamename, genreid) {
     ]);
   }
 }
+// write a function to update genres fro a game
 //create genre
 async function newGenre(genrename, description) {
   await pool.query(`insert into genre (genrename,description) values ($1,$2)`, [
@@ -94,7 +95,13 @@ async function deleteFromgame(gamename) {
     delete from game_genre where game_genre.gameid=${gameid.rows[0].gameid}`);
 }
 //update game
-async function updateGame(gamename) {}
+async function updateGame(gameid, gamename, gamedesc, gameprice) {
+  await pool.query(
+    `update games set (gamename,description,price)=($1,$2,$3) where gameid=${gameid}`,
+    [gamename, gamedesc, gameprice]
+  );
+}
+
 //update genre
 module.exports = {
   getAllGames,
@@ -105,9 +112,10 @@ module.exports = {
   getGameForGenre,
   newGame,
   newGenre,
-  genreForGame,
+  insertGenreForGame,
   deleteGenre,
   deleteGame,
   deleteFromgenre,
   deleteFromgame,
+  updateGame,
 };

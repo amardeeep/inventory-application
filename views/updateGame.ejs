@@ -8,7 +8,7 @@
   <body>
     <%- include('header') %> <%- include('navbar') %> <%-
     include("partials/errors.ejs") %>
-    <form action="/updateGame" method="post">
+    <form action="/<%=game[0].gameid%>/updateGamePost" method="post">
       <label for="gamename">Name :</label>
       <input
         type="text"
@@ -30,12 +30,7 @@
         id="gameprice"
         value="<%=game[0].price%>"
       />
-      <label for="genre">Select Genre :</label>
-      <select name="genre" id="genre" multiple>
-        <%for (let genrename of genrenames){%>
-        <option value="<%=genrename.genreid%>"><%=genrename.genrename%></option>
-        <%}%>
-      </select>
+
       <a href="/"><button type="button">Back</button></a>
       <button type="submit">Submit</button>
     </form>
