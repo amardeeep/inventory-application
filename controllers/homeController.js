@@ -126,7 +126,10 @@ const deleteGame = async (req, res) => {
 //update game
 
 //update genre
-
+const updateGenreGet = (req, res) => {
+  res.render();
+};
+const updateGenrePost = [validateGenre, async (req, res) => {}];
 module.exports = {
   getGames,
   getGame,
