@@ -97,6 +97,12 @@ async function deleteFromgame(gamename) {
 //update game
 
 //update genre
+async function updateGenre(genreid, genrename, genredesc) {
+  await pool.query(
+    `update genre set (genrename,description)=($1,$2) where genreid=${genreid}`,
+    [genrename, genredesc]
+  );
+}
 module.exports = {
   getAllGames,
   getGame,
@@ -111,4 +117,5 @@ module.exports = {
   deleteGame,
   deleteFromgenre,
   deleteFromgame,
+  updateGenre,
 };
