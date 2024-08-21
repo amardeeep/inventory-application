@@ -28,5 +28,5 @@ homeRouter.get("/newGenre", newGenre);
 homeRouter.post("/newGenre", postGenre);
 homeRouter.get("/:genrename/deleteGenre", deleteGenre);
 homeRouter.get("/:gamename/deleteGame", deleteGame);
-
+//update Routers
 module.exports = homeRouter;

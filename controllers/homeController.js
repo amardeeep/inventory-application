@@ -11,8 +11,6 @@ const validateGame = [
     .trim()
     .notEmpty()
     .withMessage(`Game Name ${empty}`)
-    .isAlpha()
-    .withMessage(`Game Name ${alphaErr}`)
     .isLength({ min: 1, max: 10 })
     .withMessage(`Game Name ${lengthErr}`),
   body("gamedesc").trim().notEmpty().withMessage(`Description ${empty}`),
@@ -29,8 +27,6 @@ const validateGenre = [
     .trim()
     .notEmpty()
     .withMessage(`Genre Name ${empty}`)
-    .isAlpha()
-    .withMessage(`Genre Name ${alphaErr}`)
     .isLength({ min: 1, max: 10 })
     .withMessage(`Genre Name ${lengthErr}`),
   body("description").trim().notEmpty().withMessage(`Description ${empty}`),

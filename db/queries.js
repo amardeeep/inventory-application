@@ -95,12 +95,6 @@ async function deleteFromgame(gamename) {
     delete from game_genre where game_genre.gameid=${gameid.rows[0].gameid}`);
 }
 //update game
-async function updateGame(gameid, gamename, gamedesc, gameprice) {
-  await pool.query(
-    `update games set (gamename,description,price)=($1,$2,$3) where gameid=${gameid}`,
-    [gamename, gamedesc, gameprice]
-  );
-}
 
 //update genre
 module.exports = {
@@ -117,5 +111,4 @@ module.exports = {
   deleteGame,
   deleteFromgenre,
   deleteFromgame,
-  updateGame,
 };
