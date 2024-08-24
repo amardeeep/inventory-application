@@ -126,10 +126,21 @@ const deleteGame = async (req, res) => {
 //update game
 
 //update genre
-const updateGenreGet = (req, res) => {
-  res.render();
+const updateGenreGet = async (req, res) => {
+  const id = req.params.id;
+  const genre = await db.getGenreId(id);
+  res.render("updateGenre", { genre: genre });
 };
-const updateGenrePost = [validateGenre, async (req, res) => {}];
+const updateGenrePost = [
+  validateGenre,
+  async (req, res) => {
+    const id = req.params.id;
+    const { genrename, description } = req.body;
+    console.log(id, genrename, description);
+    await db.updateGenre(id, genrename, description);
+    res.redirect("/genres");
+  },
+];
 module.exports = {
   getGames,
   getGame,
@@ -142,4 +153,6 @@ module.exports = {
   postGenre,
   deleteGenre,
   deleteGame,
+  updateGenreGet,
+  updateGenrePost,
 };

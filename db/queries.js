@@ -10,6 +10,7 @@ async function getGame(gamename) {
   );
   return rows;
 }
+
 async function getGenreForGame(gameid) {
   const { rows } = await pool.query(`select genre.genrename from genre
 join game_genre on genre.genreid=game_genre.genreid
@@ -18,6 +19,12 @@ where games.gameid=${gameid};`);
   return rows;
 }
 //read genres
+async function getGenreId(id) {
+  const { rows } = await pool.query(
+    `select * from genre where genre.genreid =${id}`
+  );
+  return rows;
+}
 async function getAllGenres() {
   const { rows } = await pool.query("select * from genre");
   return rows;
@@ -108,6 +115,7 @@ module.exports = {
   getGame,
   getAllGenres,
   getGenre,
+  getGenreId,
   getGenreForGame,
   getGameForGenre,
   newGame,
