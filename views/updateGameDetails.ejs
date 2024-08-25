@@ -3,25 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Update Genre</title>
+    <title>Document</title>
   </head>
   <body>
-    <form action="/updateGenre/<%=genre[0].genreid%>" method="post">
-      <label for="genrename">Name :</label>
+    <form action="/updateGameDetails/<%=game[0].gameid%>" method="post">
+      <label for="gamename">Game Name :</label>
       <input
         type="text"
-        name="genrename"
-        id="genrename"
-        value="<%=genre[0].genrename%>"
+        name="gamename"
+        id="gamename"
+        value="<%=game[0].gamename %>"
       />
       <label for="description">Description :</label>
       <input
         type="text"
         name="description"
         id="description"
-        value="<%=genre[0].description%>"
+        value="<%=game[0].description%>"
       />
-      <a href="/genres"><Button type="button">Back</Button></a>
+      <label for="price">Price :</label>
+      <input type="number" name="price" id="price" value="<%=game[0].price%>" />
+      <a href="/games">Back</a>
       <button type="submit">Submit</button>
     </form>
   </body>

@@ -13,8 +13,8 @@ const {
   postGenre,
   deleteGenre,
   deleteGame,
-  updateGameGet,
-  updateGamePost,
+  updateGameDGet,
+  updateGameDPost,
   updateGenreGet,
   updateGenrePost,
 } = require("../controllers/homeController");
@@ -34,4 +34,6 @@ homeRouter.get("/:gamename/deleteGame", deleteGame);
 //update Routers
 homeRouter.get("/updateGenre/:id", updateGenreGet);
 homeRouter.post("/updateGenre/:id", updateGenrePost);
+homeRouter.get("/updateGameDetails/:id", updateGameDGet);
+homeRouter.post("/updateGameDetails/:id", updateGameDPost);
 module.exports = homeRouter;
