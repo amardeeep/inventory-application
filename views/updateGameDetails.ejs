@@ -3,31 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="body.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
   </head>
   <body>
     <%- include('header') %> <%- include('navbar') %> <%-
     include("partials/errors.ejs") %>
-    <form action="/updateGameDetails/<%=game[0].gameid%>" method="post">
-      <label for="gamename">Game Name :</label>
-      <input
-        type="text"
-        name="gamename"
-        id="gamename"
-        value="<%=game[0].gamename %>"
-      />
-      <label for="description">Description :</label>
-      <input
-        type="text"
-        name="description"
-        id="description"
-        value="<%=game[0].description%>"
-      />
-      <label for="price">Price :</label>
-      <input type="number" name="price" id="price" value="<%=game[0].price%>" />
-      <a href="/games">Back</a>
-      <button type="submit">Submit</button>
-    </form>
+    <div class="content">
+      <form action="/updateGameDetails/<%=game[0].gameid%>" method="post">
+        <label for="gamename">Game Name :</label>
+        <input
+          type="text"
+          name="gamename"
+          id="gamename"
+          value="<%=game[0].gamename %>"
+        />
+        <label for="description">Description :</label>
+        <input
+          type="text"
+          name="description"
+          id="description"
+          value="<%=game[0].description%>"
+        />
+        <label for="price">Price :</label>
+        <input
+          type="number"
+          name="price"
+          id="price"
+          value="<%=game[0].price%>"
+        />
+        <a href="/games">Back</a>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
     <%- include('footer') %>
   </body>
 </html>

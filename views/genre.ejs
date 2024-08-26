@@ -3,11 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="body.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap"
+      rel="stylesheet"
+    />
     <title><%=title%></title>
   </head>
   <body>
     <%- include('header') %> <%- include('navbar') %>
-    <div>
+    <div class="content">
       <h2><%=genre[0].genrename%></h2>
       <p><%=genre[0].description%></p>
       <a href="/genres">Back</a>
