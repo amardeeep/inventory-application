@@ -6,6 +6,8 @@
     <title>Update Genre</title>
   </head>
   <body>
+    <%- include('header') %> <%- include('navbar') %> <%-
+    include("partials/errors.ejs") %>
     <form action="/updateGenre/<%=genre[0].genreid%>" method="post">
       <label for="genrename">Name :</label>
       <input
@@ -24,5 +26,6 @@
       <a href="/genres"><Button type="button">Back</Button></a>
       <button type="submit">Submit</button>
     </form>
+    <%- include('footer') %>
   </body>
 </html>

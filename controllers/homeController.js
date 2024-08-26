@@ -2,7 +2,6 @@
 const db = require("../db/queries");
 //validation
 const { body, validationResult } = require("express-validator");
-const alphaErr = "must only contain letters";
 const numErr = "must only contains numbers";
 const empty = "cannot be empty";
 const lengthErr = "must be between 1 and 10 characters";
@@ -30,6 +29,21 @@ const validateGenre = [
     .isLength({ min: 1, max: 10 })
     .withMessage(`Genre Name ${lengthErr}`),
   body("description").trim().notEmpty().withMessage(`Description ${empty}`),
+];
+const validateGameUpdate = [
+  body("gamename")
+    .trim()
+    .notEmpty()
+    .withMessage(`Game Name ${empty}`)
+    .isLength({ min: 1, max: 10 })
+    .withMessage(`Game Name ${lengthErr}`),
+  body("description").trim().notEmpty().withMessage(`Description ${empty}`),
+  body("price")
+    .trim()
+    .notEmpty()
+    .withMessage(`Price ${empty}`)
+    .isNumeric()
+    .withMessage(`Price ${numErr}`),
 ];
 //display home
 const getHome = async (req, res) => {
@@ -129,12 +143,22 @@ const updateGameDGet = async (req, res) => {
   const game = await db.getGameid(id);
   res.render("updateGameDetails", { game: game });
 };
-const updateGameDPost = async (req, res) => {
-  const id = req.params.id;
-  const { gamename, description, price } = req.body;
-  await db.updateGameD(id, gamename, description, price);
-  res.redirect("/games");
-};
+const updateGameDPost = [
+  validateGameUpdate,
+  async (req, res) => {
+    const id = req.params.id;
+    const game = await db.getGameid(id);
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res
+        .status(400)
+        .render("updateGameDetails", { game: game, errors: errors.array() });
+    }
+    const { gamename, description, price } = req.body;
+    await db.updateGameD(id, gamename, description, price);
+    res.redirect("/games");
+  },
+];
 const updateGameGGet = async (req, res) => {
   const id = req.params.id;
   const game = await db.getGameid(id);
@@ -161,6 +185,13 @@ const updateGenrePost = [
   validateGenre,
   async (req, res) => {
     const id = req.params.id;
+    const genre = await db.getGenreId(id);
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res
+        .status(400)
+        .render("updateGenre", { genre: genre, errors: errors.array() });
+    }
     const { genrename, description } = req.body;
     await db.updateGenre(id, genrename, description);
     res.redirect("/genres");

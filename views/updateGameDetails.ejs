@@ -6,6 +6,8 @@
     <title>Document</title>
   </head>
   <body>
+    <%- include('header') %> <%- include('navbar') %> <%-
+    include("partials/errors.ejs") %>
     <form action="/updateGameDetails/<%=game[0].gameid%>" method="post">
       <label for="gamename">Game Name :</label>
       <input
@@ -26,5 +28,6 @@
       <a href="/games">Back</a>
       <button type="submit">Submit</button>
     </form>
+    <%- include('footer') %>
   </body>
 </html>

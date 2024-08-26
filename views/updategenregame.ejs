@@ -6,6 +6,8 @@
     <title>Document</title>
   </head>
   <body>
+    <%- include('header') %> <%- include('navbar') %> <%-
+    include("partials/errors.ejs") %>
     <div>
       Genres associated for this game are :
       <ul>
@@ -22,5 +24,6 @@
       </select>
       <button type="submit">Update</button>
     </form>
+    <%- include('footer') %>
   </body>
 </html>
