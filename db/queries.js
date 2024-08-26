@@ -75,6 +75,24 @@ async function insertGenreForGame(gamename, genreid) {
   }
 }
 // write a function to update genres fro a game
+async function deleteGenreForGame(gameid) {
+  await pool.query(`delete from game_genre where game_genre.gameid=${gameid}`);
+}
+async function updateGG(gameid, genreid) {
+  if (Array.isArray(genreid.genre)) {
+    for (let num of genreid.genre) {
+      await pool.query(
+        `insert into game_genre (gameid,genreid) values ($1,$2)`,
+        [gameid, parseInt(num)]
+      );
+    }
+  } else {
+    await pool.query(`insert into game_genre (gameid,genreid) values($1,$2)`, [
+      gameid,
+      parseInt(genreid.genre),
+    ]);
+  }
+}
 //create genre
 async function newGenre(genrename, description) {
   await pool.query(`insert into genre (genrename,description) values ($1,$2)`, [
@@ -120,6 +138,7 @@ async function updateGenre(genreid, genrename, genredesc) {
     [genrename, genredesc]
   );
 }
+
 module.exports = {
   getAllGames,
   getGame,
@@ -138,4 +157,6 @@ module.exports = {
   deleteFromgame,
   updateGenre,
   updateGameD,
+  deleteGenreForGame,
+  updateGG,
 };

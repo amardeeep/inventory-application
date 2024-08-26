@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      Genres associated for this game are :
+      <ul>
+        <% for(let genre of game[0].genre){%>
+        <li><%=genre.genrename%></li>
+        <%}%>
+      </ul>
+    </div>
+    <form action="/updateGameGPost/<%=game[0].gameid%>" method="post">
+      <select name="genre" id="genre" multiple>
+        <% for(let gen of genre){%>
+        <option value="<%=gen.genreid%>"><%=gen.genrename%></option>
+        <%}%>
+      </select>
+      <button type="submit">Update</button>
+    </form>
+  </body>
+</html>
