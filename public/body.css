@@ -1,32 +1,41 @@
 body{
+  background-color: #CA0123;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main{
+  background-color: white;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
     padding: 50px;
     font-family: "Major Mono Display", monospace;
     font-weight: 400;
-    width: 100vw;
-    height: 100vh;
+    width: 90vw;
+    height: 80vh;
     display: grid;
-    grid-template: 10% 80% 10% / 30% 70%;
+    grid-template: 15% 80% 5% / 25% 75%;
     grid-template-areas: " header header "
     "nav content"
     " nav footer"
     ;
 }
-/* unvisited link */
 a:link { 
+  text-decoration: none;
     color: red;
   }
-  
-  /* visited link */
   a:visited {
+    text-decoration: none;
     color: red;
   }
-  
-  /* mouse over link */
   a:hover {
-    color: hotpink;
+    text-decoration: none;
+    color: #CA0123;
   }
-  
-  /* selected link */
   a:active {
     color: blue;
   }
@@ -35,20 +44,51 @@ ul{
     padding: 0;
     margin: 0;
 }
+ul.navb{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 
+}
+.list{
+  font-weight: bold;
+  padding: 10px;
+  padding-left: 20px;
+  border: 1px solid red;
+  border-radius: 25px;
+}
+.list:hover{
+  background-color: red;
+  color: white;
+}
 .header{
+  border-right: 2px solid red;
+  padding: 20px;
+  font-size: 40px;
+  font-weight: 800;
     grid-area: header;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 .footer{
     grid-area: footer;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    border-left:none
 }
 .nav{
+    padding: 20px;
+    border-right: 2px solid red;
     grid-area: nav;
+    border-bottom: 2px solid red;
 }
 .content{
+  background-color: #FF2800;
+  color: white;
+  padding: 20px;
     grid-area: content;
 }

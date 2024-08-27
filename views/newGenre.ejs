@@ -11,18 +11,20 @@
     <title>New Genre</title>
   </head>
   <body>
-    <%- include('header') %> <%- include('navbar') %> <%-
-    include("partials/errors.ejs") %>
-    <div class="content">
-      <form action="/newGenre" method="post">
-        <label for="genrename">Name :</label>
-        <input type="text" name="genrename" id="genrename" />
-        <label for="description">Description :</label>
-        <input type="text" name="description" id="description" />
-        <a href="/"><Button type="button">Back</Button></a>
-        <button type="submit">Submit</button>
-      </form>
+    <div class="main">
+      <%- include('header') %> <%- include('navbar') %> <%-
+      include("partials/errors.ejs") %>
+      <div class="content">
+        <form action="/newGenre" method="post">
+          <label for="genrename">Name :</label>
+          <input type="text" name="genrename" id="genrename" />
+          <label for="description">Description :</label>
+          <input type="text" name="description" id="description" />
+          <a href="/"><Button type="button">Back</Button></a>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+      <%- include('footer') %>
     </div>
-    <%- include('footer') %>
   </body>
 </html>

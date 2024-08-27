@@ -11,31 +11,33 @@
     <title><%=title%></title>
   </head>
   <body>
-    <%- include('header') %> <%- include('navbar') %>
-    <div class="content">
-      <h2><%=game[0].gamename%></h2>
-      <p><%=game[0].description%></p>
-      <p><%=game[0].price%></p>
-      <a href="/games">Back</a>
-      <a href="/updateGameDetails/<%=game[0].gameid%>"
-        ><button>Update Details</button></a
-      >
-      <a href="/updateGameGGet/<%=game[0].gameid%>"
-        ><button>Update Genre</button></a
-      >
-      <a href="/<%=game[0].gamename%>/deleteGame">
-        <button>Delete</button>
-      </a>
-      <nav>
-        <ul>
-          <% for (let genre of game.genre) {%>
-          <a href="/genres/<%=genre.genrename%>"
-            ><li><%=genre.genrename%></li></a
-          >
-          <%}%>
-        </ul>
-      </nav>
+    <div class="main">
+      <%- include('header') %> <%- include('navbar') %>
+      <div class="content">
+        <h2><%=game[0].gamename%></h2>
+        <p><%=game[0].description%></p>
+        <p><%=game[0].price%></p>
+        <a href="/games">Back</a>
+        <a href="/updateGameDetails/<%=game[0].gameid%>"
+          ><button>Update Details</button></a
+        >
+        <a href="/updateGameGGet/<%=game[0].gameid%>"
+          ><button>Update Genre</button></a
+        >
+        <a href="/<%=game[0].gamename%>/deleteGame">
+          <button>Delete</button>
+        </a>
+        <nav>
+          <ul>
+            <% for (let genre of game.genre) {%>
+            <a href="/genres/<%=genre.genrename%>"
+              ><li><%=genre.genrename%></li></a
+            >
+            <%}%>
+          </ul>
+        </nav>
+      </div>
+      <%- include('footer') %>
     </div>
-    <%- include('footer') %>
   </body>
 </html>
