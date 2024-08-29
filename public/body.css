@@ -1,29 +1,144 @@
-body{
-  background-color: #CA0123;
+/*body{
+  background-color: ;
   margin: 0;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
+.footerContent{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.navFooterContent{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.headerNavFooterContent{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 .main{
-  background-color: white;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+    background-color: white;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
     padding: 50px;
     font-family: "Major Mono Display", monospace;
     font-weight: 400;
     width: 90vw;
-    height: 80vh;
-    display: grid;
-    grid-template: 15% 80% 5% / 25% 75%;
-    grid-template-areas: " header header "
-    "nav content"
-    " nav footer"
-    ;
+    min-height: 80vh;
 }
+
+.header{
+  border-right: 2px solid red;
+  padding: 20px;
+  font-size: 40px;
+  
+  font-weight: 800;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+.footer{
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  border-left:none
+}
+.nav{
+  padding: 20px;
+  border-right: 2px solid red;
+  border-bottom: 2px solid red;
+  min-height: fit-content;
+}
+.content{
+  background-color: #FF2800;
+  min-height: fit-content;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+  */
+body{
+  margin: 0;
+}
+.main{
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: stretch;
+  padding: 50px;
+  background-color: #CA0123;
+  font-family: "Major Mono Display", monospace;
+  font-weight: 800;  
+}
+.headerNavFooterContent{
+  padding: 25px;
+  flex-basis: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+}
+.header{
+  flex-basis: 15%;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size:40px ;
+}
+.navFooterContent{
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  flex-basis: 85%;
+}
+.nav{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  flex-basis: 20%;
+  border-right: 2px solid red;
+  border-bottom: 2px solid red;
+  
+}
+.footerContent{
+  display: flex;
+  flex-direction: column;
+  background-color: #FF2800;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+  flex-basis: 80%;
+}
+.footer{
+  display: flex;
+  padding: 25px;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  flex-basis: 5%;
+  background-color: white;
+}
+.content{
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  flex-basis: 95%;
+}
+
+/* */
 a:link { 
   text-decoration: none;
     color: red;
@@ -60,35 +175,4 @@ ul.navb{
 .list:hover{
   background-color: red;
   color: white;
-}
-.header{
-  border-right: 2px solid red;
-  padding: 20px;
-  font-size: 40px;
-  font-weight: 800;
-    grid-area: header;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-}
-.footer{
-    grid-area: footer;
-    padding: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    border-left:none
-}
-.nav{
-    padding: 20px;
-    border-right: 2px solid red;
-    grid-area: nav;
-    border-bottom: 2px solid red;
-}
-.content{
-  background-color: #FF2800;
-  color: white;
-  padding: 20px;
-    grid-area: content;
 }

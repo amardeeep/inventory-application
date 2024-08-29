@@ -12,29 +12,36 @@
   </head>
   <body>
     <div class="main">
-      <%- include('header') %> <%- include('navbar') %> <%-
-      include("partials/errors.ejs") %>
-      <div class="content">
-        <form action="/newGame" method="post">
-          <label for="gamename">Name :</label>
-          <input type="text" name="gamename" id="gamename" />
-          <label for="gamedesc">Description :</label>
-          <input type="text" name="gamedesc" id="gamedesc" />
-          <label for="gameprice">Price :</label>
-          <input type="text" name="gameprice" id="gameprice" />
-          <label for="genre">Select Genre :</label>
-          <select name="genre" id="genre" multiple>
-            <%for (let genrename of genrenames){%>
-            <option value="<%=genrename.genreid%>">
-              <%=genrename.genrename%>
-            </option>
-            <%}%>
-          </select>
-          <a href="/"><button type="button">Back</button></a>
-          <button type="submit">Submit</button>
-        </form>
+      <div class="headerNavFooterContent">
+        <%- include('header') %>
+        <div class="navFooterContent">
+          <%- include('navbar') %>
+          <div class="footerContent">
+            <div class="content">
+              <%- include("partials/errors.ejs") %>
+              <form action="/newGame" method="post">
+                <label for="gamename">Name :</label>
+                <input type="text" name="gamename" id="gamename" />
+                <label for="gamedesc">Description :</label>
+                <input type="text" name="gamedesc" id="gamedesc" />
+                <label for="gameprice">Price :</label>
+                <input type="text" name="gameprice" id="gameprice" />
+                <label for="genre">Select Genre :</label>
+                <select name="genre" id="genre" multiple>
+                  <%for (let genrename of genrenames){%>
+                  <option value="<%=genrename.genreid%>">
+                    <%=genrename.genrename%>
+                  </option>
+                  <%}%>
+                </select>
+                <a href="/"><button type="button">Back</button></a>
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+            <%- include('footer') %>
+          </div>
+        </div>
       </div>
-      <%- include('footer') %>
     </div>
   </body>
 </html>

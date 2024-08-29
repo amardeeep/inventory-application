@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/body.css" />
+    <link rel="stylesheet" href="/game.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap"
       rel="stylesheet"
@@ -12,32 +13,42 @@
   </head>
   <body>
     <div class="main">
-      <%- include('header') %> <%- include('navbar') %>
-      <div class="content">
-        <h2><%=game[0].gamename%></h2>
-        <p><%=game[0].description%></p>
-        <p><%=game[0].price%></p>
-        <a href="/games">Back</a>
-        <a href="/updateGameDetails/<%=game[0].gameid%>"
-          ><button>Update Details</button></a
-        >
-        <a href="/updateGameGGet/<%=game[0].gameid%>"
-          ><button>Update Genre</button></a
-        >
-        <a href="/<%=game[0].gamename%>/deleteGame">
-          <button>Delete</button>
-        </a>
-        <nav>
-          <ul>
-            <% for (let genre of game.genre) {%>
-            <a href="/genres/<%=genre.genrename%>"
-              ><li><%=genre.genrename%></li></a
-            >
-            <%}%>
-          </ul>
-        </nav>
+        <div class="headerNavFooterContent">
+          <%- include('header') %>
+          <div class="navFooterContent">
+            <%- include('navbar') %>
+            <div class="footerContent">
+              <div class="content ">
+                <div class="game">
+                <h2><%=game[0].gamename%></h2>
+                <p><%=game[0].description%></p>
+                <p>Price : <%=game[0].price%></p>
+                <nav class="genre">
+                  <ul>
+                    <% for (let genre of game.genre) {%>
+                    <a  href="/genres/<%=genre.genrename%>"
+                      ><div class="genreLinks"><%=genre.genrename%></div></a
+                    >
+                    <%}%>
+                  </ul>
+                </nav>
+                <nav class="link">
+                  <a  href="/games"><div class="gameLinks">Back</div></a>
+                  <a href="/updateGameDetails/<%=game[0].gameid%>"
+                    ><div class="gameLinks">Update Details</div></a
+                  >
+                  <a  href="/updateGameGGet/<%=game[0].gameid%>"
+                    ><div class="gameLinks">Update Genre</div></a
+                  >
+                  <a  href="/<%=game[0].gamename%>/deleteGame">
+                    <div class="gameLinks">Delete</div>
+                  </a>
+                </nav>
+              </div>
+              </div><%- include('footer') %></div>
+          </div>
+        </div>
       </div>
-      <%- include('footer') %>
     </div>
   </body>
 </html>

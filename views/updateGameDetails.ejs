@@ -12,36 +12,46 @@
   </head>
   <body>
     <div class="main">
-      <%- include('header') %> <%- include('navbar') %> <%-
-      include("partials/errors.ejs") %>
-      <div class="content">
-        <form action="/updateGameDetails/<%=game[0].gameid%>" method="post">
-          <label for="gamename">Game Name :</label>
-          <input
-            type="text"
-            name="gamename"
-            id="gamename"
-            value="<%=game[0].gamename %>"
-          />
-          <label for="description">Description :</label>
-          <input
-            type="text"
-            name="description"
-            id="description"
-            value="<%=game[0].description%>"
-          />
-          <label for="price">Price :</label>
-          <input
-            type="number"
-            name="price"
-            id="price"
-            value="<%=game[0].price%>"
-          />
-          <a href="/games">Back</a>
-          <button type="submit">Submit</button>
-        </form>
+      <div class="headerNavFooterContent">
+        <%- include('header') %>
+        <div class="navFooterContent">
+          <%- include('navbar') %>
+          <div class="footerContent">
+            <div class="content">
+              <%- include("partials/errors.ejs") %>
+              <form
+                action="/updateGameDetails/<%=game[0].gameid%>"
+                method="post"
+              >
+                <label for="gamename">Game Name :</label>
+                <input
+                  type="text"
+                  name="gamename"
+                  id="gamename"
+                  value="<%=game[0].gamename %>"
+                />
+                <label for="description">Description :</label>
+                <input
+                  type="text"
+                  name="description"
+                  id="description"
+                  value="<%=game[0].description%>"
+                />
+                <label for="price">Price :</label>
+                <input
+                  type="number"
+                  name="price"
+                  id="price"
+                  value="<%=game[0].price%>"
+                />
+                <a href="/games">Back</a>
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+            <%- include('footer') %>
+          </div>
+        </div>
       </div>
-      <%- include('footer') %>
     </div>
   </body>
 </html>

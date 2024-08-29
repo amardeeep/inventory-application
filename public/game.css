@@ -1,0 +1,31 @@
+.game{
+    padding: 30px;
+    background-color: white;
+    color: red;
+    font-weight: 800;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-basis: 100%;
+}
+h2{
+    border-bottom: 1px solid red;
+    font-size: xx-large;
+}
+.genreLinks{
+    font-weight: bold;
+    padding: 10px;
+    border: 1px solid white;
+    background-color: red;
+    color: white;
+    border-radius: 25px;
+    flex-basis: 25%;
+}
+nav.link{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-top: 1px solid red;
+    padding: 10px;
+}
