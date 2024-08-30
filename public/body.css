@@ -110,6 +110,7 @@ body{
   display: flex;
   flex-direction: column;
   padding: 20px;
+  padding-right: 40px;
   flex-basis: 20%;
   border-right: 2px solid red;
   border-bottom: 2px solid red;
@@ -148,8 +149,9 @@ a:link {
     color: red;
   }
   a:hover {
-    text-decoration: none;
-    color: #CA0123;
+    text-decoration: underline;
+    color: red;
+
   }
   a:active {
     color: blue;

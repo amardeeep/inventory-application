@@ -20,7 +20,8 @@
             <div class="footerContent">
               <div class="content ">
                 <div class="game">
-                <h2><%=game[0].gamename%></h2>
+                <div class="top">
+                  <h2><%=game[0].gamename%></h2>
                 <p><%=game[0].description%></p>
                 <p>Price : <%=game[0].price%></p>
                 <nav class="genre">
@@ -32,6 +33,7 @@
                     <%}%>
                   </ul>
                 </nav>
+                </div>
                 <nav class="link">
                   <a  href="/games"><div class="gameLinks">Back</div></a>
                   <a href="/updateGameDetails/<%=game[0].gameid%>"
