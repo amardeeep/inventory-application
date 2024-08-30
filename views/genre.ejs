@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/body.css" />
+    <link rel="stylesheet" href="/genre.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap"
       rel="stylesheet"
@@ -18,24 +19,31 @@
           <%- include('navbar') %>
           <div class="footerContent">
             <div class="content">
-              <h2><%=genre[0].genrename%></h2>
-              <p><%=genre[0].description%></p>
-              <a href="/genres">Back</a>
-              <a href="/updateGenre/<%=genre[0].genreid%>"
-                ><button>Update</button></a
-              >
-              <a href="/<%=genre[0].genrename%>/deleteGenre"
-                ><button>Delete</button></a
-              >
-              <nav>
-                <ul>
-                  <% for (let game of genre.game){%>
-                  <a href="/games/<%=game.gamename%>"
-                    ><li><%=game.gamename%></li></a
+              <div class="genre">
+                <div class="top">
+                  <h2><%=genre[0].genrename%></h2>
+                  <p><%=genre[0].description%></p>
+                  <nav class="game">
+                    <ul>
+                      <% for (let game of genre.game){%>
+                      <a href="/games/<%=game.gamename%>"
+                        ><li class="gameLinks"><%=game.gamename%></li></a
+                      >
+                      <%}%>
+                    </ul>
+                  </nav>
+                </div>
+
+                <nav class="links">
+                  <a href="/genres"><div>Back</div> </a>
+                  <a href="/updateGenre/<%=genre[0].genreid%>"
+                    ><div>Update</div>
+                  </a>
+                  <a href="/<%=genre[0].genrename%>/deleteGenre"
+                    ><div>Delete</div></a
                   >
-                  <%}%>
-                </ul>
-              </nav>
+                </nav>
+              </div>
             </div>
             <%- include('footer') %>
           </div>
